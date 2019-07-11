@@ -41,6 +41,7 @@ class School
     end
   end
 
+#bonus stuff 
   def upgrade(student)
     #advance student up a grade
     #find the student in the roster
