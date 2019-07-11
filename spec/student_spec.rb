@@ -58,4 +58,15 @@ describe 'School' do
       expect(@school.sort).to eq({7 => ["Blake Johnson", "Jack Bauer"], 9 => ["Bart Simpson", "Homer Simpson"], 10 => ["Avi Flombaum", "Jeff Baird"]})
     end
   end
+
+
+#bonus stuff
+  describe "#upgrade" do
+	   it 'is able to advance students to next grade' do
+		   @school.add_student("Jack Bauer", 7)
+		   @school.upgrade("Jack Bauer")
+		   expect(@school.roster).to eq({7 => [], 8 => ["Jack Bauer"]})
+	   end
+  end
+
 end

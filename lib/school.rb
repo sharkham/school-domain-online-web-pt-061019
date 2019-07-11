@@ -9,13 +9,11 @@ class School
   end
 
   def add_student(student, grade)
-    @student = student
-    @grade = grade
-    if @roster.key?(@grade)
-      @roster[@grade] << @student
+    if @roster.key?(grade)
+      @roster[grade] << student
     else
-      @roster[@grade] = []
-      @roster[@grade] << @student
+      @roster[grade] = []
+      @roster[grade] << student
     end
   end
 
@@ -41,6 +39,22 @@ class School
     @roster.each do |grade, students|
       students.sort!
     end
+  end
+
+  def upgrade(student)
+    #advance student up a grade
+    #find the student in the roster
+    #iterate over roster and check each grade for student
+    current_grade = nil
+    @roster.each do |grade, students|
+      if @roster[grade].include?(student)
+        current_grade = grade
+      end
+    end
+    #remove student's name from grade student's in
+    @roster[current_grade].delete_if{|i| i = student}
+    #add student to the hash key for grade + 1
+    add_student(student, current_grade + 1)
   end
 
 end
